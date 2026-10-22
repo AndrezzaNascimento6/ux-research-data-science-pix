@@ -6,9 +6,27 @@ results are exploratory. This is not evidence about real bank customers.
 
 ## Run locally
 
-Use Python 3.11–3.13 (validated with Python 3.13). From the repository root:
+Install Python 3.11–3.13 (validated with Python 3.13) and Git before starting.
+Python is available from [python.org](https://www.python.org/downloads/), and Git
+from [git-scm.com](https://git-scm.com/downloads). On Windows, enable the Python
+launcher during installation so the `py` command is available. Reopen your
+terminal after installing these tools.
+
+Choose the instructions for your operating system and terminal. Run each command
+in order, one line at a time. The first two commands download the repository and
+enter its folder. If you already have a local copy, open a terminal in the folder
+containing `README.md` and `requirements.txt` and skip those two commands.
+
+### macOS and Linux
+
+Open Terminal. Check that `python3 --version` reports Python 3.11, 3.12 or 3.13,
+then create and activate the virtual environment, install dependencies, run the
+analysis and run the basic tests:
 
 ```bash
+git clone https://github.com/AndrezzaNascimento6/ux-research-data-science-pix.git
+cd ux-research-data-science-pix
+python3 --version
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
@@ -16,10 +34,60 @@ python -m src.analysis
 python -m pytest -q
 ```
 
-On Windows, activate with `.venv\Scripts\activate` instead. No notebook, external
-dataset, credentials, dashboard or service integration is required. Matplotlib
-uses a noninteractive backend. Rerunning the pipeline overwrites generated files
-in `data/` and `outputs/`. Run commands from the repository root.
+If Linux reports that `venv` or `ensurepip` is unavailable, install the virtual
+environment package for your Python version using your distribution's package
+manager, then retry environment creation.
+
+### Windows: PowerShell
+
+Open PowerShell. Check that `py --version` reports Python 3.11, 3.12 or 3.13.
+Use this sequence to create and activate the virtual environment, install
+dependencies, run the analysis and run the basic tests:
+
+```powershell
+git clone https://github.com/AndrezzaNascimento6/ux-research-data-science-pix.git
+cd ux-research-data-science-pix
+py --version
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m src.analysis
+python -m pytest -q
+```
+
+If PowerShell blocks activation because scripts are disabled, use the CMD
+instructions below in the same project folder, starting with `py --version`.
+
+### Windows: Command Prompt (CMD)
+
+Open Command Prompt and run:
+
+```bat
+git clone https://github.com/AndrezzaNascimento6/ux-research-data-science-pix.git
+cd ux-research-data-science-pix
+py --version
+py -m venv .venv
+.venv\Scripts\activate.bat
+python -m pip install -r requirements.txt
+python -m src.analysis
+python -m pytest -q
+```
+
+### Outputs and later runs
+
+The analysis prints the session count, selected K and silhouette score. Generated
+tables, six PNG charts and `report.md` appear in `outputs/`; the synthetic dataset
+appears in `data/`. The test command should report `3 passed`.
+
+For later runs, open a terminal in the project folder, activate `.venv` using the
+command for your terminal above, then run `python -m src.analysis`. Dependencies
+only need to be installed again if the environment is recreated or requirements
+change. Run `deactivate` when you are finished.
+
+No notebook, external dataset, credentials, dashboard or service integration is
+required. Matplotlib uses a noninteractive backend, so charts are saved to files
+rather than opened in a window. Rerunning the pipeline overwrites generated files
+in `data/` and `outputs/`. Run all project commands from the repository root.
 
 ## Repository structure
 
