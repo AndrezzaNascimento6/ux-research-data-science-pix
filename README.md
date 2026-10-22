@@ -96,7 +96,7 @@ data/synthetic_pix_sessions.csv   Generated session-level dataset
 src/generate_data.py              Fixed-seed synthetic data generator
 src/analysis.py                   EDA, scaling, K selection, figures and report
 outputs/                         Generated CSV tables, six PNGs and report.md
-claude/                          Compact context, exported summary and manual prompt
+claude/                          Context, summary, prompt and Claude-assisted interpretation
 tests/test_pipeline.py            Data, clustering and end-to-end checks
 requirements.txt                 Pinned direct dependencies
 ```
@@ -185,8 +185,11 @@ The [Claude prompt](claude/claude_prompt.md) explains how to use only the compac
 [cluster summary](claude/analysis_summary.csv). These files reuse existing pipeline
 results without refitting K-Means. They emphasize synthetic data, weak separation
 at silhouette 0.320, and the distinction between observations and untested hypotheses.
-This is a manual handoff; no API integration or generated Claude interpretation
-is included.
+Read the [Claude-assisted interpretation](claude/interpretation.md) for the
+response supplied by the project author. It preserves the original metrics and
+conclusions and separates evidence, untested hypotheses, future research and
+limitations. All sessions are synthetic, and the hypotheses have not been
+validated with real users. This is a manual workflow; no API integration is included.
 
 ## Limitations and next research steps
 
